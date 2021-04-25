@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const TodoListItem = ({ todo, onRemovePressed, onCompletedPressed }) => (
   <StyledItemLine className="todo-item-container">
-    <h3>{todo.text}</h3>
+    <StyledText>{todo.text}</StyledText>
     <div className="buttons-container">
       {todo.isCompleted
         ? null
@@ -25,5 +25,10 @@ const StyledItemLine = styled.div`
   display: flex;
   align-items: center;
 `
+
+const StyledText = styled.span`
+  font-size: 1em;
+  line-height: 2em;
+`;
 
 export default TodoListItem;
