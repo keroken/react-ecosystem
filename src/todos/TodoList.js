@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import TodoListItem from './TodoListItem';
 import NewTodoForm from './NewTodoForm';
+import styled from 'styled-components';
 import {
-    getTodos,
     getTodosLoading,
     getIncompleteTodos,
     getCompleteTodos,
@@ -17,7 +17,7 @@ const TodoList = ({ completedTodos, incompleteTodos, onRemovePressed, onComplete
 
   const loadingMessage = <div>Loading todos...</div>;
   const content = (
-    <div className="list-wrapper">
+    <ListWrapper>
       <NewTodoForm />
       <h3>Incomplete:</h3>
       {incompleteTodos.map(todo => 
@@ -37,7 +37,7 @@ const TodoList = ({ completedTodos, incompleteTodos, onRemovePressed, onComplete
           onCompletedPressed={onCompletedPressed}
         />
       )}
-    </div>
+    </ListWrapper>
   );
   return isLoading ? loadingMessage : content;
 };
@@ -53,5 +53,10 @@ const mapDispatchToProps = dispatch => ({
   onRemovePressed: id => dispatch(removeTodoRequest(id)),
   onCompletedPressed: id => dispatch(completeTodoRequest(id)),
 });
+
+const ListWrapper = styled.div`
+  max-width: 700px;
+  margin: auto;
+`;
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoList);
