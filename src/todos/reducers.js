@@ -63,13 +63,13 @@ export const todos = (state = initialState, action) => {
     case LOAD_TODOS_IN_PROGRESS:
       return {
         ...state,
-        isLaoding: true,
+        isLoading: true,
       }
     case LOAD_TODOS_FAILURE:
     default:
       return {
         ...state,
-        isLaoding: false,
+        isLoading: false,
       }
   }
 };
